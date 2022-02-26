@@ -39,9 +39,15 @@ public class events extends ListenerAdapter {
         if (e.isFromGuild()) {
             Guild guild = e.getGuild();
             if (guild.getId().equalsIgnoreCase(Main.GuildID)) {
+                Member member = e.getMember();
+                Role role = reactionRole(e.getMessageId(), e.getGuild(), e.getReactionEmote());
                 if (e.getChannel().getId().equalsIgnoreCase(Main.ReactionChannelID)) {
-                    Member member = e.getMember();
-                    Role role = reactionRole(e.getMessageId(), e.getGuild(), e.getReactionEmote());
+                    if (role != null) {
+                        if (member != null) {
+                            guild.addRoleToMember(member, role).queue();
+                        }
+                    }
+                } else if (e.getChannel().getId().equalsIgnoreCase(Main.RulesChannelID)) {
                     if (role != null) {
                         if (member != null) {
                             guild.addRoleToMember(member, role).queue();

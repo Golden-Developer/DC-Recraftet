@@ -14,9 +14,9 @@ public class Main {
 
     public static JDA bot;
     public static String BotToken ="OTQ3MTU3MTg1NDY3NjYyMzQ3.YhpK3g.L5j05-uHeoCIl6HTAnqyR_W8yAc";
-    public static String GuildID ="923646470706565140";
+    public static String GuildID ="783384633059704842";
     public static String WelcomeChannelID ="783384633911541771";
-    public static String ReactionChannelID ="923647336528363620";
+    public static String ReactionChannelID ="783638375949139979";
     public static String RulesChannelID ="783428555069587456";
 
     public static void main(String[] args) {
