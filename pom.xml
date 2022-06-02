@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>de._coho04_</groupId>
-    <artifactId>Recraftet-Discord</artifactId>
+    <groupId>de.goldendeveloper</groupId>
+    <artifactId>GD-Recraftet</artifactId>
     <version>1.0</version>
 
     <properties>
@@ -70,7 +70,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>de._coho04_.recraftet.discord.Main</mainClass>
+                            <mainClass>de.goldendeveloper.recraftet.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -93,12 +93,21 @@
         </repository>
     </repositories>
 
-
     <dependencies>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.36</version>
+        </dependency>
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
-            <version>4.4.0_350</version>
+            <version>5.0.0-alpha.12</version>
+        </dependency>
+        <dependency>
+            <groupId>club.minnced</groupId>
+            <artifactId>discord-webhooks</artifactId>
+            <version>0.8.0</version>
         </dependency>
     </dependencies>
 </project>
