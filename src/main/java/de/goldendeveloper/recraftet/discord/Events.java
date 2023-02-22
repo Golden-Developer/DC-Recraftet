@@ -6,10 +6,10 @@ import club.minnced.discord.webhook.send.WebhookEmbedBuilder;
 import de.goldendeveloper.recraftet.Main;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.*;
-import net.dv8tion.jda.api.events.ShutdownEvent;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.events.message.react.MessageReactionAddEvent;
 import net.dv8tion.jda.api.events.message.react.MessageReactionRemoveEvent;
+import net.dv8tion.jda.api.events.session.ShutdownEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.commands.Command;
 import net.dv8tion.jda.api.interactions.components.buttons.Button;
@@ -83,7 +83,7 @@ public class Events extends ListenerAdapter {
             Guild guild = e.getGuild();
             if (guild.getId().equalsIgnoreCase(Main.GuildID)) {
                 Member member = e.getMember();
-                Role role = reactionRole(e.getMessageId(), e.getGuild(), e.getReactionEmote());
+                Role role = reactionRole(e.getMessageId(), e.getGuild(), e.getReaction());
                 if (e.getChannel().getId().equalsIgnoreCase(Main.ReactionChannelID)) {
                     if (role != null) {
                         if (member != null) {
@@ -107,7 +107,7 @@ public class Events extends ListenerAdapter {
             Guild guild = e.getGuild();
             if (guild.getId().equalsIgnoreCase(Main.GuildID)) {
                 Member member = e.getMember();
-                Role role = reactionRole(e.getMessageId(), e.getGuild(), e.getReactionEmote());
+                Role role = reactionRole(e.getMessageId(), e.getGuild(), e.getReaction());
                 if (e.getChannel().getId().equalsIgnoreCase(Main.ReactionChannelID)) {
                     if (role != null) {
                         if (member != null) {
@@ -125,10 +125,10 @@ public class Events extends ListenerAdapter {
         }
     }
 
-    public static Role reactionRole(String messageId, Guild guild, MessageReaction.ReactionEmote emote) {
+    public static Role reactionRole(String messageId, Guild guild, MessageReaction emote) {
         Role role = null;
         if (messageId.equalsIgnoreCase("947201275827740672")) {
-            switch (emote.getAsReactionCode()) {
+            switch (emote.getEmoji().getAsReactionCode()) {
                 case "\uD83D\uDC25" -> role = guild.getRoleById("783636915613204500");
                 case "\uD83E\uDE90" -> role = guild.getRoleById("783636958010146827");
                 case "\uD83C\uDFC0" -> role = guild.getRoleById("783636982961537025");
@@ -144,13 +144,13 @@ public class Events extends ListenerAdapter {
                 case "\uD83D\uDD77️" -> role = guild.getRoleById("783637952080379924");
             }
         } else if (messageId.equalsIgnoreCase("947202239552958485")) {
-            switch (emote.getAsReactionCode()) {
+            switch (emote.getEmoji().getAsReactionCode()) {
                 case "\uD83D\uDC40" -> role = guild.getRoleById("784334914379841536");
                 case "\uD83D\uDC65" -> role = guild.getRoleById("784339056712220702");
                 case "\uD83D\uDD25" -> role = guild.getRoleById("784339132096315402");
             }
         } else if (messageId.equalsIgnoreCase("947208245443981412")) {
-            if (emote.getAsReactionCode().equalsIgnoreCase("✅")) {
+            if (emote.getEmoji().getAsReactionCode().equalsIgnoreCase("✅")) {
                 role = guild.getRoleById("783639878461030440");
             }
         }
